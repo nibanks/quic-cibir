@@ -37,7 +37,7 @@ instance, in server deployments that have hundreds or thousands of machines,
 each with tens or hundreds of different QUIC servers running on them, the
 server infrastructure may not be able to support the number of local UDP ports
 it would require to give each server a unique one.  Additionally, because of
-infrastucture requirements additional IP addresses may not be able to be used
+infrastructure requirements additional IP addresses may not be able to be used
 as a solution either.
 
 In these scenarios, the server infrastructure needs a way to essentially NAT
@@ -62,7 +62,7 @@ Support for encoding CIBIR information is negotiated by means of a QUIC
 Transport Parameter (name=cibir_encoding, value=0x30).  The cibir_encoding
 transport parameter consists of two integer values (represented as
 variable-length integers) that represent the length and offset to the
-well-known idenfitier encoded into the client's source connection ID.
+well-known identifier encoded into the client's source connection ID.
 
 Servers that share a local UDP port using the CIBIR extension unconditionally
 route received packets according to the CIBIR extension's protocol.  The
@@ -96,13 +96,13 @@ To achieve consistent routing for these long header packets, the client encodes
 a well-known identifier into its source connection ID.  The length and offset of
 the well-known ID must be pre-agreed upon between the client and server, and is
 validated via the cibir_encoding transport parameter as described above.  When
-the server infrastucture receives a QUIC long header packet on the shared UDP
+the server infrastructure receives a QUIC long header packet on the shared UDP
 port it uses the well-known identifier to route the packet to the correct
 server.
 
 No special routing is necessary for short header packets.  These packets always
 use server chosen destination connection IDs, and the logic by which these CIDs
-and created and interpretted is purely up to the server and server
+ are chosen, created and interpreted is purely up to the server and server
 infrastructure.  The client doesn't need to be involved in this logic beyond the
 normal use of destination connection IDs.
 

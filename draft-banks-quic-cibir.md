@@ -82,6 +82,30 @@ TRANSPORT_PARAMETER_ERROR.
 
 ## Packet Encoding and Routing
 
+The base QUIC transport protocol provides no way to consistently route long
+header packets to the correct server in a shared UDP environment.  The only
+possibly way a server's infrastructure has to identify which server the client
+is trying to connect to is the ALPN or SNI, but these are not included in all
+long header packets.  Additionally, the destination connection ID in packets
+sent to the server cannot be used because there is no stateless way determine if
+the CID is client or server chosen, not to mention the complexities around
+server chosen CIDs in a load balanced environment (which the client does not
+necessarily know anything about).
+
+To achieve consistent routing for these long header packets, the client encodes
+a well-known identifier into its source connection ID.  The length and offset of
+the well-known ID must be pre-agreed upon between the client and server, and is
+validated via the cibir_encoding transport parameter as described above.  When
+the server infrastucture receives a QUIC long header packet on the shared UDP
+port it uses the well-known identifier to route the packet to the correct
+server.
+
+No special routing is necessary for short header packets.  These packets always
+use server chosen destination connection IDs, and the logic by which these CIDs
+and created and interpretted is purely up to the server and server
+infrastructure.  The client doesn't need to be involved in this logic beyond the
+normal use of destination connection IDs.
+
 # Security Considerations
 
 The client encodes well-known IDs in the QUIC connection ID that may expose

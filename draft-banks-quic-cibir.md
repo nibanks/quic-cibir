@@ -57,7 +57,7 @@ when, and only when, they appear in all capitals, as shown here.
 ## Transport Parameter
 
 Support for encoding CIBIR information is negotiated by means of a QUIC
-Transport Parameter (name=cibir_encoding, value=0x30).  The cibir_encoding
+Transport Parameter (name=cibir_encoding, value=0x80).  The cibir_encoding
 transport parameter consists of two integer values (represented as
 variable-length integers) that represent the length and offset to the
 well-known identifier encoded into the client's source connection ID.
@@ -119,7 +119,7 @@ maintained at
 
 Value:
 
-: 0x30
+: 0x80
 
 Parameter Name:
 

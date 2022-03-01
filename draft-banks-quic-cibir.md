@@ -1,16 +1,14 @@
 ---
 title: QUIC Connection ID Based Initial Routing
 abbrev: QUIC-CIBIR
-docname: draft-banks-quic-cibir-00
+docname: draft-banks-quic-cibir-latest
 category: exp
-date: 2022
-
-stand_alone: yes
-
+date: {DATE}
 ipr: trust200902
 area: Transport
+wg: QUIC
 kw: Internet-Draft
-
+stand_alone: yes
 coding: us-ascii
 pi: [toc, sortrefs, symrefs, comments]
 

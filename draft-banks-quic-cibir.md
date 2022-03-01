@@ -1,7 +1,7 @@
 ---
 title: QUIC Connection ID Based Initial Routing
 abbrev: QUIC-CIBIR
-docname: draft-banks-quic-cibir-latest
+docname: draft-banks-quic-cibir-00
 category: exp
 date: {DATE}
 ipr: trust200902

@@ -62,6 +62,14 @@ transport parameter consists of two integer values (represented as
 variable-length integers) that represent the length and offset to the
 well-known identifier encoded into the client's source connection ID.
 
+~~~
+cibir_encoding TP {
+  Length (i),
+  Offset (i)
+}
+~~~
+{: #cibir-encoding-format title="CIBIR TP Format"}
+
 Servers that share a local UDP port using the CIBIR extension unconditionally
 route received packets according to the CIBIR extension's protocol.  The
 cibir_encoding transport parameter is used on the server side after the routing
